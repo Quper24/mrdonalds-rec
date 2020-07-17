@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const List = styled.ul`
     display: flex;
-    justyfy-content: space-around;
+    justify-content: space-around;
     flex-wrap: wrap;
 `;
 
@@ -43,7 +43,7 @@ const Item = styled.li`
 export const ListItem = ({ itemList }) => (
     <List>
         {itemList.map(item => (
-            <Item 
+            <Item
                 key={item.id}
                 img={item.img}>
                 <p>{item.name}</p>
