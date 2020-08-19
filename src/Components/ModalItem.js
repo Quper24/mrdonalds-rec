@@ -55,21 +55,21 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
         if (e.target.id === 'overlay') {
             setOpenItem(null);
         }
-    }
+    };
 
     const order = {
         ...openItem
     };
 
     const addToOrder = () => {
-        setOrders([...orders, order])
+        setOrders([...orders, order]);
         setOpenItem(null);
-    }
+    };
 
-    
+
     return (
         <Overlay id="overlay" onClick={closeModal}>
-            
+
             <Modal>
                 <Banner img={openItem.img}/>
                 <Content>
@@ -77,10 +77,10 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
                         <div>{openItem.name}</div>
                         <div>{openItem.price}</div>
                     </HeaderContent>
-                    <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>  
-                </Content>    
+                    <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
+                </Content>
             </Modal>
-    
+
         </Overlay>
     )
 };
