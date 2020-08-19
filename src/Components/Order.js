@@ -7,7 +7,7 @@ const OrderStyled = styled.section`
     position: fixed;
     display: flex;
     flex-direction: column;
-    top: 80px
+    top: 80px;
     left: 0;
     background: #fff;
     min-width: 380px;
@@ -36,22 +36,25 @@ const Total = styled.div`
 `;
 
 const TotalPrice = styled.span`
-    tex-align: right;
+    text-align: right;
     min-width: 65px;
     margin-left: 20px;
 `;
 
+const EmptyList = styled.p`
+    text-align: center;
+`;
 
-export const Order = () => {
+export const Order = ({ orders }) => {
     return (
         <OrderStyled>
             <OrderTitle>ВАШ ЗАКАЗ</OrderTitle>
             <OrderContent>
+                {orders.length ?
                 <OrderList>
-                    <OrderListItem/>
-                    <OrderListItem/>
-                    <OrderListItem/>
-                </OrderList>
+                    {orders.map(order => <OrderListItem order={order}/>)}
+                </OrderList> :
+                <EmptyList>Список заказов пуст</EmptyList>}
             </OrderContent>
             <Total>
                 <span>Итого</span>
@@ -61,4 +64,4 @@ export const Order = () => {
             <ButtonCheckout>Оформить</ButtonCheckout>
         </OrderStyled>
     )
-}
+};
