@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { ButtonCheckout } from "../Styled/ButtonCheckout";
 import { CountItem } from './CountItem';
 import { useCount } from '../Hooks/useCount';
+import { totalPriceItems } from '../Functions/secondaryFunction';
+import { formatCurrency } from '../Functions/secondaryFunction';
+import { Topping } from './Topping';
+import { useTopping } from '../Hooks/useTopping';
 
 const Overlay = styled.div`
     position: fixed;
@@ -53,11 +57,11 @@ const TotalPriceItem = styled.div`
     justify-content: space-between;
 `;
 
-export const totalPriceItems = order => order.price * order.count;
 
 export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
 
     const counter = useCount();
+    const toppings = useTopping(openItem);
 
     const closeModal = e => {
         if (e.target.id === 'overlay') {
@@ -67,16 +71,14 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
 
     const order = {
         ...openItem,
-        count: counter.count
+        count: counter.count,
+        topping: toppings.toppings,
     };
-
 
     const addToOrder = () => {
         setOrders([...orders, order]);
         setOpenItem(null);
     };
-
-
     return (
         <Overlay id="overlay" onClick={closeModal}>
 
@@ -85,13 +87,13 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
                 <Content>
                     <HeaderContent>
                         <div>{openItem.name}</div>
-                        <div>{openItem.price}</div>
+                        <div>{formatCurrency(openItem.price)}</div>
                     </HeaderContent>
                     <CountItem {...counter}/>
+                    {openItem.toppings && <Topping {...toppings}/>}
                     <TotalPriceItem>
                         <span>Цена:</span>
-                        <span>{totalPriceItems(order).toLocaleString('ru-RU',
-                            {style: 'currency', currency: 'RUB'})}</span>
+                        <span>{formatCurrency(totalPriceItems(order))}</span>
                     </TotalPriceItem>
                     <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
                 </Content>
