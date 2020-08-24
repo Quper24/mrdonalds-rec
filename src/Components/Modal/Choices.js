@@ -10,7 +10,7 @@ const ChoiceWrap = styled.div`
 
 const ChoiceRadio = styled.input`
     cursor: pointer;
-    margin-tight: 5px;
+    margin-right: 5px;
 `;
 
 const ChoiceLabel = styled.label`
@@ -19,25 +19,25 @@ const ChoiceLabel = styled.label`
 `;
 
 export function Choices({ openItem, choice, changeChoices }) {
-    return (
-        <>
-            <h3>Выбирайте:</h3>
-            <ChoiceWrap>
-                {openItem.choices.map((item, i) => (
-                    <ChoiceLabel key={i}>
-                        <ChoiceRadio
-                            type="radio"
-                            name="choices"
-                            checked={choice === item}
-                            value={item}
-                            onChange={changeChoices}
-                            />
-                        {item}
-                    </ChoiceLabel>
-                ))}
+	return (
+		<>
+			<h3>Выбирайте:</h3>
+			<ChoiceWrap>
+				{openItem.choices.map((item, i) => (
+					<ChoiceLabel key={i}>
+						<ChoiceRadio
+							type="radio"
+							name="choices"
+							checked={choice === item}
+							value={item}
+							onChange={changeChoices}
+						/>
+						{item}
+					</ChoiceLabel>
+				))}
 
 
-            </ChoiceWrap>
-        </>
-    )
+			</ChoiceWrap>
+		</>
+	)
 }

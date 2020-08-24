@@ -9,19 +9,19 @@ import { useOrders } from './Components/Hooks/useOrders';
 
 function App() {
 
-  const openItem = useOpenItem();
-  const orders = useOrders();
+	const openItem = useOpenItem();
+	const orders = useOrders();
 
 
-  return (
-    <>
-      <GlobalStyle/>
-      <NavBar/>
-      <Order {...orders} />
-      <Menu {...openItem}/>
-      { openItem.openItem && <ModalItem {...openItem} {...orders}/>}
-    </>
-  );
+	return (
+		<>
+			<GlobalStyle/>
+			<NavBar/>
+			<Order {...orders} {...openItem} />
+			<Menu {...openItem}/>
+			{openItem.openItem && <ModalItem {...openItem} {...orders}/>}
+		</>
+	);
 }
 
 export default App;

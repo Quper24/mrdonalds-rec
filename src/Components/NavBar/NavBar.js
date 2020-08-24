@@ -40,14 +40,14 @@ const Login = styled.button`
 `;
 
 export const NavBar = () => (
-    <NavBarStyled>
-        <Logo>
-            <ImgLogo src={logoImg} alt="лого"/>
-            <H1>MrDonald's</H1>
-        </Logo>
-        <Login>
-            <img src={siginImg} alt="войти"/>
-            <p>войти</p>
-        </Login>
-    </NavBarStyled>
+	<NavBarStyled>
+		<Logo>
+			<ImgLogo src={logoImg} alt="лого"/>
+			<H1>MrDonald's</H1>
+		</Logo>
+		<Login>
+			<img src={siginImg} alt="войти"/>
+			<p>войти</p>
+		</Login>
+	</NavBarStyled>
 );
