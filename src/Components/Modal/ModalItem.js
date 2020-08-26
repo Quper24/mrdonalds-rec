@@ -26,7 +26,7 @@ const Overlay = styled.div`
 const Modal = styled.div`
     background-color: #fff;
     width: 600px;
-    height: 600px
+    height: 600px;
 `;
 
 const Banner = styled.div`
@@ -43,7 +43,7 @@ const Content = styled.section`
     flex-direction: column;
     justify-content: space-between;
     height: calc(100% - 200px);
-    padding: 30px
+    padding: 30px;
 `;
 
 const HeaderContent = styled.div`
@@ -62,7 +62,7 @@ const TotalPriceItem = styled.div`
 
 export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
 
-    const counter = useCount();
+    const counter = useCount(openItem.count);
     const toppings = useToppings(openItem);
     const choices = useChoices(openItem);
     const isEdit = openItem.index > -1;
@@ -84,6 +84,7 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
         const newOrders = [...orders];
         newOrders[openItem.index] = order;
         setOrders(newOrders);
+        setOpenItem(null);
     };
 
     const addToOrder = () => {
@@ -111,7 +112,7 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
                     <ButtonCheckout
                         onClick={isEdit ? editOrder : addToOrder}
                         disabled={order.choices && !order.choice}
-                        >Добавить</ButtonCheckout>
+                        >{isEdit ? 'Редактировать' : 'Добавить'}</ButtonCheckout>
                 </Content>
             </Modal>
 
