@@ -15,8 +15,8 @@ export const useFetch = () => {
             } catch(err) {
                 setError(err);
             }
-        })();        
+        })();
     }, []);
-    
+
     return { response, error };
-}
+};
