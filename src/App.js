@@ -34,9 +34,9 @@ function App() {
 		<>
 			<GlobalStyle/>
 			<NavBar {...auth}/>
-			<Order 
-				{...orders} 
-				{...openItem} 
+			<Order
+				{...orders}
+				{...openItem}
 				{...auth}
 				firebaseDatabase={firebase.database}
 			/>
